@@ -1,0 +1,9 @@
+<mat-selection-list #facts>
+  <mat-list-option *ngFor="let fact of mainFacts">
+    {{fact}}
+  </mat-list-option>
+</mat-selection-list>
+
+<p>
+  Options selected: {{facts.selectedOptions.selected.length}}
+</p>

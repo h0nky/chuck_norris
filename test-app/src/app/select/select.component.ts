@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from '../shared/categories.service';
 
 @Component({
   selector: 'app-select',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./select.component.scss']
 })
 export class SelectComponent implements OnInit {
+  categories: string[];
 
-  constructor() { }
+  constructor(private categoriesService: CategoriesService) {}
 
-  ngOnInit(): void {
+  getCategories(): void {
+    this.categories = this.categoriesService.getCategories();
   }
 
+  ngOnInit(): void {
+    this.getCategories();
+  }
 }

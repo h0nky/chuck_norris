@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { ListComponent } from './list/list.component';
+import { SourceListComponent } from './source-list/source-list.component';
 import { SelectComponent } from './select/select.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { StoreModule } from './store/module';
@@ -12,14 +12,16 @@ import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { NgReduxModule, NgRedux } from '@angular-redux/store';
+import { NgReduxModule } from '@angular-redux/store';
+import { CustomListComponent } from './custom-list/custom-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
+    SourceListComponent,
     SelectComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    CustomListComponent
   ],
   imports: [
     BrowserModule,
