@@ -6,14 +6,19 @@ import { AppComponent } from './app.component';
 import { SourceListComponent } from './source-list/source-list.component';
 import { SelectComponent } from './select/select.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { CustomListComponent } from './custom-list/custom-list.component';
 import { StoreModule } from './store/module';
 
 import { MatListModule } from '@angular/material/list';
+import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { HttpClientModule } from '@angular/common/http';
 
 import { NgReduxModule } from '@angular-redux/store';
-import { CustomListComponent } from './custom-list/custom-list.component';
+
+import { AppActions } from './app.actions';
+
 
 @NgModule({
   declarations: [
@@ -30,9 +35,11 @@ import { CustomListComponent } from './custom-list/custom-list.component';
     MatSelectModule,
     MatToolbarModule,
     NgReduxModule,
-    StoreModule
+    StoreModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AppActions],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

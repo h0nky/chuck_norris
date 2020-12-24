@@ -1,1 +1,12 @@
-<p>select works!</p>
+<form>
+  <h4>Choose category</h4>
+  <mat-form-field appearance="fill">
+    <mat-label>Category</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="category">
+      <mat-option *ngFor="let category of categories" [value]="category">
+        {{category}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p>{{selectedValue}}</p>
+</form>
