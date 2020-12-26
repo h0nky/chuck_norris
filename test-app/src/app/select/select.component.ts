@@ -1,31 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from '../shared/categories.service';
 import { NgRedux } from '@angular-redux/store';
+import { ButtonComponent } from '../button/button.component';
+import { FactsService } from '../shared/facts.service';
+import { IAppState } from '../store/interfaces';
 
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss']
+  styleUrls: ['./select.component.scss'],
+  providers: [ButtonComponent]
 })
 export class SelectComponent implements OnInit {
   selectedValue: string;
-  categories;
+  categories: string[];
+  warningMessage: string;
 
   constructor(
+    private factsService: FactsService,
     private categoriesService: CategoriesService,
-    private ngRedux: NgRedux<any>
+    private ngRedux: NgRedux<IAppState>
   ) {
-    this.categories = ngRedux
+    ngRedux
       .select<string[]>('categories')
       .subscribe(newCategories => this.categories = newCategories);
   }
 
-  getCategories(): void {
-    // @ts-ignore
+  ngOnInit(): void {
     this.categoriesService.getCategories();
   }
 
-  ngOnInit(): void {
-    this.getCategories();
+  onPress(): void {
+    if (!this.selectedValue) {
+      this.warningMessage = 'Please, choose category before make a request';
+    } else {
+      this.warningMessage = '';
+      this.factsService.getMainFacts(this.selectedValue);
+    }
   }
 }

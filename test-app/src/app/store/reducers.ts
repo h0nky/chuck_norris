@@ -7,7 +7,7 @@ export const initialState: IAppState = {
   facts: []
 };
 
-export function rootReducer(state= initialState, action): any {
+export function rootReducer(state= initialState, action): IAppState {
   const { type, payload } = action;
   switch (type) {
     case 'FETCHING_CATEGORIES':
@@ -18,7 +18,7 @@ export function rootReducer(state= initialState, action): any {
     case 'FETCHING_FACTS':
       return { ...state, loading: true };
     case 'FACTS_FETCHED':
-      const facts = payload;
+      const facts = payload.result.map(item => item.value);
       return { ...state, facts, loading: false };
     default:
       return state;

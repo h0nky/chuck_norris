@@ -1,20 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { FactsService } from '../shared/facts.service';
+import { Component } from '@angular/core';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../store/interfaces';
 
 @Component({
   selector: 'app-list',
   templateUrl: './source-list.component.html'
 })
-export class SourceListComponent implements OnInit {
+export class SourceListComponent {
   mainFacts: string[];
 
-  constructor(private factsService: FactsService) {}
-
-  getFacts(): void {
-    this.mainFacts = this.factsService.getMainFacts();
-  }
-
-  ngOnInit(): void {
-    this.getFacts();
+  constructor(
+    private ngRedux: NgRedux<IAppState>
+  ) {
+    ngRedux
+      .select<string[]>('facts')
+      .subscribe(facts => this.mainFacts = facts);
   }
 }

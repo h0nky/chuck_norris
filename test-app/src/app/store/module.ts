@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import { rootReducer, initialState } from './reducers';
 import { IAppState } from './interfaces';
-
 // Middleware
 import { createLogger } from 'redux-logger';
 
@@ -10,7 +9,7 @@ import { createLogger } from 'redux-logger';
   imports: [NgReduxModule]
 })
 export class StoreModule {
-  constructor(store: NgRedux<any>) {
+  constructor(store: NgRedux<IAppState>) {
     store.configureStore(rootReducer, initialState, [createLogger()]);
   }
 }

@@ -14,10 +14,12 @@ import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
 
 import { NgReduxModule } from '@angular-redux/store';
 
 import { AppActions } from './app.actions';
+import { ButtonComponent } from './button/button.component';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { AppActions } from './app.actions';
     SourceListComponent,
     SelectComponent,
     ToolbarComponent,
-    CustomListComponent
+    CustomListComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { AppActions } from './app.actions';
     NgReduxModule,
     StoreModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
   ],
   providers: [AppActions],
   bootstrap: [AppComponent]
