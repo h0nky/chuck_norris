@@ -15,6 +15,7 @@ export class SelectComponent implements OnInit {
   selectedValue: string;
   categories: string[];
   warningMessage: string;
+  buttonLabel = 'Get Facts';
 
   constructor(
     private factsService: FactsService,

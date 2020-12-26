@@ -1,4 +1,4 @@
-<form>
+<div>
   <mat-form-field appearance="fill">
     <mat-label>Category</mat-label>
     <mat-select [(ngModel)]="selectedValue" name="category">
@@ -7,8 +7,8 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <p>{{warningMessage}}</p>
-  <div>
-    <app-button (click)="onPress()" color="primary"></app-button>
+  <div class="button_wrapper">
+    <app-button (onPressButton)="onPress()" color="primary" [label]="buttonLabel"></app-button>
   </div>
-</form>
+  <p>{{warningMessage}}</p>
+</div>
