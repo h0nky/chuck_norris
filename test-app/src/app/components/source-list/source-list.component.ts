@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../store/interfaces';
-import { AppActions } from '../app.actions';
+import { IAppState } from '../../store/interfaces';
+import { Actions } from '../../actions/actions';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
@@ -14,17 +14,24 @@ export class SourceListComponent {
   mainFacts: string[];
   selectedFacts: string[];
   buttonLabel = 'Move';
+  spinner: boolean;
 
   constructor(
     private ngRedux: NgRedux<IAppState>,
-    private actions: AppActions
+    private actions: Actions
   ) {
+    ngRedux
+      .select('loading')
+      .subscribe((loadingState: boolean) => this.spinner = loadingState);
     ngRedux
       .select<string[]>('facts')
       .subscribe(facts => this.mainFacts = facts);
   }
 
   onMove(): void {
-    this.actions.moveToCustomList(this.selectedFacts);
+    if (this.selectedFacts && this.selectedFacts.length) {
+      this.actions.moveToCustomList(this.selectedFacts);
+      this.selectedFacts = [];
+    }
   }
 }

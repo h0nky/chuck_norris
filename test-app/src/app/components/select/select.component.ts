@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService } from '../shared/categories.service';
+import { CategoriesService } from '../../services/categories.service';
 import { NgRedux } from '@angular-redux/store';
 import { ButtonComponent } from '../button/button.component';
-import { FactsService } from '../shared/facts.service';
-import { IAppState } from '../store/interfaces';
+import { FactsService } from '../../services/facts.service';
+import { IAppState } from '../../store/interfaces';
 
 @Component({
   selector: 'app-select',

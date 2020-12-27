@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../store/interfaces';
-import { AppActions } from '../app.actions';
+import { IAppState } from '../../store/interfaces';
+import { Actions } from '../../actions/actions';
 
 @Component({
   selector: 'app-custom-list',
@@ -12,12 +12,12 @@ import { AppActions } from '../app.actions';
 })
 export class CustomListComponent {
   customFacts: string[];
-  selectedFacts: string[];
+  selectedFacts: string[] = [];
   buttonLabel = 'Remove';
 
   constructor(
     private ngRedux: NgRedux<IAppState>,
-    private actions: AppActions
+    private actions: Actions
   ) {
     ngRedux
       .select<string[]>('customList')
@@ -25,7 +25,8 @@ export class CustomListComponent {
   }
 
   onRemove(): void {
-    this.actions.removeFromCustomList(this.selectedFacts);
+    if (this.selectedFacts.length) {
+      this.actions.removeFromCustomList(this.selectedFacts);
+    }
   }
-
 }

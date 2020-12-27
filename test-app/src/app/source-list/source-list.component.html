@@ -1,9 +1,0 @@
-<div class="source-list__container" *ngIf="mainFacts.length !== 0">
-  <h4 class="list__title">Source List</h4>
-  <mat-selection-list #facts [(ngModel)]="selectedFacts">
-    <mat-list-option *ngFor="let fact of mainFacts" [value]="fact">
-      {{fact}}
-    </mat-list-option>
-  </mat-selection-list>
-  <app-button (onPressButton)="onMove()" [label]="buttonLabel"></app-button>
-</div>
