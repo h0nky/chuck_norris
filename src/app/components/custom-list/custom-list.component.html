@@ -1,9 +1,0 @@
-<div class="custom-list__container" *ngIf="customFacts.length !== 0">
-  <h4 class="list__title">Custom List</h4>
-  <mat-selection-list #facts [(ngModel)]="selectedFacts">
-    <mat-list-option *ngFor="let fact of customFacts" [value]="fact">
-      {{fact}}
-    </mat-list-option>
-  </mat-selection-list>
-    <app-button (onPressButton)="onRemove()" [label]="buttonLabel"></app-button>
-</div>
