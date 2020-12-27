@@ -1,0 +1,14 @@
+<div>
+  <mat-form-field appearance="fill">
+    <mat-label>Category</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="category">
+      <mat-option *ngFor="let category of categories" [value]="category">
+        {{category}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="button_wrapper">
+    <app-button (onPressButton)="onPress()" color="primary" [label]="buttonLabel"></app-button>
+  </div>
+  <p>{{warningMessage}}</p>
+</div>
